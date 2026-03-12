@@ -14,21 +14,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
 
     # Third party
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-    'cloudinary',
-    'cloudinary_storage',
-    
+    'django_filters',
 
     # Hausio apps
     'accounts',
     'listings',
-
-    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -114,11 +112,30 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # ── Cloudinary ───────────────────────────────────────────────────
+import cloudinary
+
+cloudinary.config(
+    cloud_name = config('CLOUDINARY_CLOUD_NAME', default=''),
+    api_key    = config('CLOUDINARY_API_KEY', default=''),
+    api_secret = config('CLOUDINARY_API_SECRET', default=''),
+    secure     = True
+)
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default=''),
-    'API_KEY': config('CLOUDINARY_API_KEY', default=''),
+    'API_KEY':    config('CLOUDINARY_API_KEY', default=''),
     'API_SECRET': config('CLOUDINARY_API_SECRET', default=''),
 }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# Django 4.2+ uses STORAGES dict instead of DEFAULT_FILE_STORAGE
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+MEDIA_URL = '/media/'
 # ── API Docs ─────────────────────────────────────────────────────

@@ -28,15 +28,35 @@ class ListingSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         images = validated_data.pop('uploaded_images', [])
+        # Handle is_furnished coming as string from FormData
+        if isinstance(validated_data.get('is_furnished'), str):
+            validated_data['is_furnished'] = validated_data['is_furnished'].lower() == 'true'
         listing = Listing.objects.create(**validated_data)
-
         for i, image in enumerate(images):
             ListingPhoto.objects.create(
                 listing    = listing,
                 image      = image,
-                is_primary = (i == 0),  # First image is primary
+                is_primary = (i == 0),
             )
         return listing
+
+    def update(self, instance, validated_data):
+        images = validated_data.pop('uploaded_images', [])
+        if isinstance(validated_data.get('is_furnished'), str):
+            validated_data['is_furnished'] = validated_data['is_furnished'].lower() == 'true'
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        # Only replace photos if new ones were uploaded
+        if images:
+            instance.photos.all().delete()
+            for i, image in enumerate(images):
+                ListingPhoto.objects.create(
+                    listing    = instance,
+                    image      = image,
+                    is_primary = (i == 0),
+                )
+        return instance
 
 
 class ScamReportSerializer(serializers.ModelSerializer):

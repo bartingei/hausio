@@ -57,7 +57,6 @@ class LandlordListingsView(generics.ListAPIView):
 
 
 class AdminListingApprovalView(APIView):
-    """Admin approves or rejects a listing."""
     permission_classes = [permissions.IsAdminUser]
 
     def patch(self, request, pk):
@@ -67,14 +66,36 @@ class AdminListingApprovalView(APIView):
             return Response({'error': 'Listing not found'}, status=404)
 
         new_status = request.data.get('status')
-        if new_status not in ['verified', 'rejected']:
-            return Response({'error': 'Status must be verified or rejected'}, status=400)
+        if new_status not in ['verified', 'rejected', 'pending']:
+            return Response({'error': 'Invalid status'}, status=400)
 
         listing.status = new_status
         listing.save()
         return Response(ListingSerializer(listing).data)
 
-
 class ScamReportView(generics.CreateAPIView):
     serializer_class   = ScamReportSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class AdminAllListingsView(generics.ListAPIView):
+    """Admin sees every listing regardless of status."""
+    serializer_class   = ListingSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+    def get_queryset(self):
+        status = self.request.query_params.get('status')
+        qs = Listing.objects.all()
+        if status:
+            qs = qs.filter(status=status)
+        return qs
+
+class AdminDeleteListingView(APIView):
+    permission_classes = [permissions.IsAdminUser]
+
+    def delete(self, request, pk):
+        try:
+            listing = Listing.objects.get(pk=pk)
+            listing.delete()
+            return Response({'message': 'Listing deleted'}, status=204)
+        except Listing.DoesNotExist:
+            return Response({'error': 'Not found'}, status=404)
