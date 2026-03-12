@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
@@ -6,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'your-app.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -109,6 +111,7 @@ SIMPLE_JWT = {
 # ── CORS ─────────────────────────────────────────────────────────
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://hausio.vercel.app',
 ]
 
 # ── Cloudinary ───────────────────────────────────────────────────
@@ -138,4 +141,7 @@ STORAGES = {
 }
 
 MEDIA_URL = '/media/'
-# ── API Docs ─────────────────────────────────────────────────────
+
+# ── Production static files ──────────────────────────────────────
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
