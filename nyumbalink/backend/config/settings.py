@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -63,14 +64,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hausio_dev',
-        'USER': 'postgres',
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL', default=f'postgres://postgres:{config("DB_PASSWORD", default="")}@localhost:5432/hausio_dev')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
