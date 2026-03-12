@@ -1,0 +1,297 @@
+.page {
+  min-height: calc(100vh - 60px);
+  background: #f8f9fa;
+  padding: 32px 24px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pageHeader h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.pageHeader p {
+  color: #666;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.addBtn {
+  background: #1A56A0;
+  color: white;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.addBtn:hover { background: #154a8a; }
+
+.formCard {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.formCard h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #1A56A0;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.photoCount {
+  font-size: 13px;
+  color: #1E7C47;
+  margin-top: 4px;
+}
+
+.submitBtn {
+  background: #1E7C47;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) { background: #196b3c; }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.cardHeader h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.statusBadge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.cardArea {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.cardPrice {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A56A0;
+  margin-bottom: 14px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.editBtn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #1A56A0;
+  background: white;
+  color: #1A56A0;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.editBtn:hover { background: #D6E4F7; }
+
+.toggleBtn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  transition: all 0.2s;
+}
+
+.toggleBtn:hover { background: #eee; }
+
+.deleteBtn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #9B2335;
+  background: white;
+  color: #9B2335;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover { background: #FADBD8; }
+
+/* Delete confirmation modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.modalCard {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modalCard h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modalCard p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.modalActions {
+  display: flex;
+  gap: 10px;
+}
+
+.deleteConfirmBtn {
+  flex: 1;
+  background: #9B2335;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.deleteConfirmBtn:hover { background: #7d1c2a; }
+
+.cancelBtn {
+  flex: 1;
+  background: #f0f0f0;
+  color: #444;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cancelBtn:hover { background: #e0e0e0; }
+
+.loading, .empty {
+  text-align: center;
+  padding: 60px;
+  color: #666;
+}
