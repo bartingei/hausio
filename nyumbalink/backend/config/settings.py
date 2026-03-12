@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['*', 'your-app.railway.app']
+ALLOWED_HOSTS = ['*', 'hausio.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
