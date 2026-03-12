@@ -13,8 +13,3 @@ class Command(BaseCommand):
                     role='admin',
                 )
                 self.stdout.write('Superuser created')
-```
-
-Then update your `Procfile`:
-```
-web: python manage.py collectstatic --noinput && python manage.py migrate && python manage.py createsu && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
