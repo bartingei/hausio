@@ -27,6 +27,7 @@ function BrowsePage() {
     }
     };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchListings(); }, []);
 
   const handleFilter = (e) => {

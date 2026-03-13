@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 
 function ListingDetailPage() {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { } = useAuth();
   const navigate = useNavigate();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
