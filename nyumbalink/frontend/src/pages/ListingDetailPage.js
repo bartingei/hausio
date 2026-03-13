@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import api from '../api/axios';
-import { useAuth } from '../context/AuthContext';
 import styles from './ListingDetailPage.module.css';
 
 // Fix default Leaflet marker icon
@@ -17,7 +16,6 @@ L.Icon.Default.mergeOptions({
 
 function ListingDetailPage() {
   const { id } = useParams();
-  const { } = useAuth();
   const navigate = useNavigate();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);

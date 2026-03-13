@@ -15,15 +15,6 @@ function AdminDashboard() {
   const [expanded, setExpanded] = useState(null);
   const [dialog, setDialog] = useState(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    if (!user || user.role !== 'admin') { 
-      navigate('/');
-      return; 
-    }
-    fetchListings();
-  }, [user, navigate]);
-
   const fetchListings = async () => {
     setLoading(true);
     try {
@@ -39,8 +30,13 @@ function AdminDashboard() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    if (!user || user.role !== 'admin') { 
+      navigate('/');
+      return; 
+    }
     fetchListings();
-  }, [filter]);
+  }, [user, navigate, filter]);
+
 
   const handleApproval = (id, status) => {
     const configs = {
