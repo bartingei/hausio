@@ -103,7 +103,7 @@ export default function LandingPage() {
             No middlemen. No fake photos. No lost deposits.
           </p>
           <div className={styles.heroCtas}>
-            <button className={styles.ctaPrimary} onClick={() => navigate('/')}>Browse Listings</button>
+            <button className={styles.ctaPrimary} onClick={() => navigate('/browse')}>Browse Listings</button>
             <button className={styles.ctaSecondary} onClick={() => navigate('/register')}>List Your Property</button>
           </div>
           <div className={styles.heroTrust}>

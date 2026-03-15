@@ -139,6 +139,27 @@ class BookmarkStatusView(APIView):
 
 
 class NeighbourhoodSafetyView(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get(self, request):
+        area = request.query_params.get('area', '')
+        try:
+            safety = NeighbourhoodSafety.objects.get(area_name__iexact=area)
+            return Response(NeighbourhoodSafetySerializer(safety).data)
+        except NeighbourhoodSafety.DoesNotExist:
+            return Response({'error': 'No safety data for this area'}, status=404)
+
+    def post(self, request):
+        area = request.data.get('area_name', '')
+        instance = NeighbourhoodSafety.objects.filter(area_name__iexact=area).first()
+        if instance:
+            serializer = NeighbourhoodSafetySerializer(instance, data=request.data, partial=True)
+        else:
+            serializer = NeighbourhoodSafetySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
