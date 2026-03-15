@@ -30,6 +30,11 @@ class ListingSerializer(serializers.ModelSerializer):
 
     def get_bookmark_count(self, obj):
         return obj.bookmarks.count()
+    
+    def validate_uploaded_images(self, value):
+        if len(value) > 4:
+            raise serializers.ValidationError('Maximum 4 photos allowed.')
+        return value
 
     class Meta:
         model  = Listing
@@ -47,7 +52,7 @@ class ListingSerializer(serializers.ModelSerializer):
         if isinstance(validated_data.get('is_furnished'), str):
             validated_data['is_furnished'] = validated_data['is_furnished'].lower() == 'true'
         listing = Listing.objects.create(**validated_data)
-        for i, image in enumerate(images):
+        for i, image in enumerate(images[:4]):
             ListingPhoto.objects.create(
                 listing=listing, image=image, is_primary=(i == 0)
             )
@@ -61,13 +66,13 @@ class ListingSerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
         if images:
-            instance.photos.all().delete()
-            for i, image in enumerate(images):
+            existing = instance.photos.count()
+            slots = max(0, 4 - existing)
+            for i, image in enumerate(images[:slots]):
                 ListingPhoto.objects.create(
-                    listing=instance, image=image, is_primary=(i == 0)
+                    listing=instance, image=image, is_primary=(i == 0 and existing == 0)
                 )
         return instance
-
 
 class ScamReportSerializer(serializers.ModelSerializer):
     class Meta:

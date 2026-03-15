@@ -278,40 +278,59 @@ export default function LandlordDashboard() {
                   )}
                 </div>
 
-                {/* Photos */}
-                <div className={`${styles.field} ${styles.fullWidth}`}>
-                  <label>Photos {!editingId && '*'}</label>
-                  <div
-                    className={styles.photoDropzone}
-                    onClick={() => document.getElementById('photoInput').click()}
-                  >
-                    <input
-                      id="photoInput"
-                      type="file"
-                      accept="image/*"
-                      multiple
-                      style={{ display: 'none' }}
-                      onChange={e => setPhotos(Array.from(e.target.files))}
-                    />
-                    {photos.length > 0 ? (
-                      <div className={styles.photoPreviewRow}>
-                        {photos.map((p, i) => (
-                          <div key={i} className={styles.photoPreview}>
-                            <img src={URL.createObjectURL(p)} alt="" />
-                            {i === 0 && <span className={styles.primaryTag}>Primary</span>}
-                          </div>
-                        ))}
+              {/* Photos */}
+              <div className={`${styles.field} ${styles.fullWidth}`}>
+                <label>Photos (max 4) {!editingId && '*'}</label>
+                <div
+                  className={styles.photoDropzone}
+                  onClick={() => document.getElementById('photoInput').click()}
+                >
+                  <input
+                    id="photoInput"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    style={{ display: 'none' }}
+                    onChange={e => {
+                      const selected = Array.from(e.target.files).slice(0, 4);
+                      setPhotos(selected);
+                    }}
+                  />
+                  {photos.length > 0 ? (
+                    <div className={styles.photoPreviewRow}>
+                      {photos.map((p, i) => (
+                        <div key={i} className={styles.photoPreview}>
+                          <img src={URL.createObjectURL(p)} alt="" />
+                          {i === 0 && <span className={styles.primaryTag}>Primary</span>}
+                          <button
+                            type="button"
+                            className={styles.removePhoto}
+                            onClick={e => {
+                              e.stopPropagation();
+                              setPhotos(prev => prev.filter((_, idx) => idx !== i));
+                            }}
+                          >✕</button>
+                        </div>
+                      ))}
+                      {photos.length < 4 && (
                         <div className={styles.addMorePhoto}>+ Add more</div>
-                      </div>
-                    ) : (
-                      <div className={styles.dropzoneEmpty}>
-                        <span className={styles.dropzoneIcon}>📷</span>
-                        <span>Click to upload photos</span>
-                        <span className={styles.dropzoneSub}>First photo will be the primary image</span>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className={styles.dropzoneEmpty}>
+                      <span className={styles.dropzoneIcon}>📷</span>
+                      <span>Click to upload up to 4 photos</span>
+                      <span className={styles.dropzoneSub}>First photo will be the cover image</span>
+                    </div>
+                  )}
                 </div>
+                {photos.length === 4 && (
+                  <span style={{ fontSize: 12, color: '#B45309', fontWeight: 600, marginTop: 4 }}>
+                    Maximum 4 photos reached
+                  </span>
+                )}
+              </div>
+                  
               </div>
 
               {error && <div className={styles.formError}>{error}</div>}
