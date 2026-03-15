@@ -9,6 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['*', 'hausio.up.railway.app']
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -109,7 +110,6 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://hausio.vercel.app',
 ]
-
 # ── Cloudinary ───────────────────────────────────────────────────
 import cloudinary
 
