@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from accounts.models import User
+from django.conf import settings
 
 
 class Listing(models.Model):
@@ -67,3 +68,41 @@ class ScamReport(models.Model):
 
     def __str__(self):
         return f"Report on {self.listing.title} — {self.reason}"
+
+class Review(models.Model):
+    RATING_CHOICES = [(i, i) for i in range(1, 6)]
+    id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    listing     = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='reviews')
+    tenant = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
+    rating      = models.IntegerField(choices=RATING_CHOICES)
+    comment     = models.TextField()
+    created_at  = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('listing', 'tenant')
+
+    def __str__(self):
+        return f'{self.tenant.email} → {self.listing.title} ({self.rating}★)'
+
+
+class Bookmark(models.Model):
+    id         = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user       = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookmarks')
+    listing    = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='bookmarks')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'listing')
+
+class NeighbourhoodSafety(models.Model):
+    id           = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    area_name    = models.CharField(max_length=100, unique=True)
+    safety_score = models.IntegerField(default=3)  # 1-5
+    lighting     = models.IntegerField(default=3)  # 1-5
+    transport    = models.IntegerField(default=3)  # 1-5
+    noise_level  = models.IntegerField(default=3)  # 1-5 (1=quiet, 5=noisy)
+    notes        = models.TextField(blank=True)
+    updated_at   = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.area_name} ({self.safety_score}★)'
