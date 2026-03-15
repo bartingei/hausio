@@ -140,3 +140,13 @@ MEDIA_URL = '/media/'
 # ── Production static files ──────────────────────────────────────
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# ── Email ────────────────────────────────────────────────────────
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST          = 'smtp.gmail.com'
+EMAIL_PORT          = 587
+EMAIL_USE_TLS       = True
+EMAIL_HOST_USER     = config('bartingeijohnpaul@gmail.com', default='')
+EMAIL_HOST_PASSWORD = config('ckcj npth tbzt vnct', default='')
+DEFAULT_FROM_EMAIL  = config('bartingeijohnpaul@gmail.com', default='')
+ADMIN_EMAIL         = config('ADMIN_EMAIL', default='')

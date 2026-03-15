@@ -2,6 +2,8 @@ from rest_framework import generics, permissions, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
+from django.core.mail import send_mail
+from django.conf import settings as django_settings
 from .models import Listing, ListingPhoto, ScamReport, Review, Bookmark, NeighbourhoodSafety
 from .serializers import (
     ListingSerializer, ScamReportSerializer,
@@ -35,7 +37,31 @@ class ListingListCreateView(generics.ListCreateAPIView):
         return qs
 
     def perform_create(self, serializer):
-        serializer.save(landlord=self.request.user)
+        listing = serializer.save(landlord=self.request.user)
+        try:
+            send_mail(
+                subject=f'🏠 New listing pending review — {listing.title}',
+                message=f'''
+A new listing has been submitted on Hausio and is awaiting your review.
+
+Title:     {listing.title}
+Area:      {listing.area_name}
+Rent:      KES {listing.rent_kes:,}/month
+Landlord:  {listing.landlord.email}
+Bedrooms:  {"Bedsitter" if listing.bedrooms == 0 else f"{listing.bedrooms} bedroom(s)"}
+Furnished: {"Yes" if listing.is_furnished else "No"}
+
+Review it here:
+https://hausio.vercel.app/admin
+
+— Hausio Platform
+                '''.strip(),
+                from_email=django_settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[django_settings.ADMIN_EMAIL],
+                fail_silently=True,
+            )
+        except Exception:
+            pass
 
 
 class ListingDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -160,12 +186,3 @@ class NeighbourhoodSafetyView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
-    permission_classes = [permissions.AllowAny]
-
-    def get(self, request):
-        area = request.query_params.get('area', '')
-        try:
-            safety = NeighbourhoodSafety.objects.get(area_name__iexact=area)
-            return Response(NeighbourhoodSafetySerializer(safety).data)
-        except NeighbourhoodSafety.DoesNotExist:
-            return Response({'error': 'No safety data for this area'}, status=404)
