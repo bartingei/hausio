@@ -65,6 +65,7 @@ export default function ListingDetailPage() {
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportForm, setReportForm] = useState({ reason: '', details: '' });
   const [reportSubmitted, setReportSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     fetchListing();
@@ -403,10 +404,11 @@ export default function ListingDetailPage() {
               className={styles.shareBtn}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                alert('Link copied!');
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
               }}
             >
-              🔗 Copy listing link
+              {copied ? '✓ Link copied!' : '🔗 Copy listing link'}
             </button>
           </div>
         </div>
