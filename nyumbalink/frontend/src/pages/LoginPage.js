@@ -18,7 +18,7 @@ function LoginPage() {
       const user = await login(form.email, form.password);
       if (user.role === 'landlord') navigate('/dashboard');
       else if (user.role === 'admin') navigate('/admin');
-      else navigate('/');
+      else navigate('/tenant');
     } catch (err) {
       setError('Invalid email or password.');
     } finally {
