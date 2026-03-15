@@ -1,3 +1,5 @@
+from django_ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import RegisterSerializer, UserSerializer
@@ -35,8 +37,9 @@ class ProfileView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 
+@method_decorator(ratelimit(key='ip', rate='5/m', method='POST', block=True), name='dispatch')
 class LoginView(TokenObtainPairView):
-    permission_classes = [permissions.AllowAny]
+    pass
 
 class MyReviewsView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
