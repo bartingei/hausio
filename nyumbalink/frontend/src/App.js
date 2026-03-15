@@ -7,6 +7,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LandlordDashboard from './pages/LandlordDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import LandingPage from './pages/LandingPage';
+
 
 function App() {
   return (
@@ -14,7 +16,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/"               element={<BrowsePage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/browse" element={<BrowsePage />} />
           <Route path="/listings/:id"   element={<ListingDetailPage />} />
           <Route path="/login"          element={<LoginPage />} />
           <Route path="/register"       element={<RegisterPage />} />
