@@ -1,19 +1,21 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
   height: 60px;
-  background: #1A56A0;
+  background: #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 800;
   color: white;
+  text-decoration: none;
   letter-spacing: -0.5px;
 }
 
@@ -24,26 +26,136 @@
 }
 
 .links a {
-  color: rgba(255,255,255,0.85);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
   transition: color 0.2s;
 }
 
-.links a:hover {
-  color: white;
-}
+.links a:hover { color: white; }
 
 .logoutBtn {
-  background: rgba(255,255,255,0.15);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 6px 16px;
-  border-radius: 6px;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.75);
   font-size: 14px;
-  transition: background 0.2s;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
 }
 
 .logoutBtn:hover {
-  background: rgba(255,255,255,0.25);
+  border-color: white;
+  color: white;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.barTop {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transform: translateY(7px) rotate(45deg);
+  transition: all 0.25s;
+}
+
+.barHide {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+.barBottom {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transform: translateY(-7px) rotate(-45deg);
+  transition: all 0.25s;
+}
+
+/* ── Mobile menu ── */
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: #1A1A1A;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  animation: slideDown 0.2s ease;
+  z-index: 99;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobileMenu a {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+
+.mobileMenu a:hover { color: white; }
+
+.mobileLogout {
+  margin-top: 16px;
+  padding: 12px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.mobileLogout:hover { border-color: white; color: white; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .links { display: none; }
+  .hamburger { display: flex; }
+  .mobileMenu { display: flex; }
 }
