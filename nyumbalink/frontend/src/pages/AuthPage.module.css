@@ -109,3 +109,13 @@
   color: #1A56A0;
   font-weight: 600;
 }
+
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
