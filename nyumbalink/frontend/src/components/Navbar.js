@@ -17,7 +17,7 @@ function Navbar() {
   const close = () => setMenuOpen(false);
 
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} style={{ position: 'relative' }}>
       <Link to="/browse" className={styles.logo} onClick={close}>
         🏠 Hausio
       </Link>
@@ -31,13 +31,11 @@ function Navbar() {
         {user?.role === 'landlord' && <Link to="/dashboard">My Listings</Link>}
         {user?.role === 'admin'    && <Link to="/admin">Admin</Link>}
         {user && (
-          <button onClick={handleLogout} className={styles.logoutBtn}>
-            Logout
-          </button>
+          <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
         )}
       </div>
 
-      {/* Hamburger button */}
+      {/* Hamburger */}
       <button
         className={styles.hamburger}
         onClick={() => setMenuOpen(v => !v)}
@@ -48,7 +46,7 @@ function Navbar() {
         <span className={menuOpen ? styles.barBottom : styles.bar} />
       </button>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown — only renders when open */}
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <Link to="/browse" onClick={close}>Browse</Link>
@@ -58,9 +56,7 @@ function Navbar() {
           {user?.role === 'landlord' && <Link to="/dashboard" onClick={close}>My Listings</Link>}
           {user?.role === 'admin'    && <Link to="/admin" onClick={close}>Admin</Link>}
           {user && (
-            <button onClick={handleLogout} className={styles.mobileLogout}>
-              Logout
-            </button>
+            <button onClick={handleLogout} className={styles.mobileLogout}>Logout</button>
           )}
         </div>
       )}

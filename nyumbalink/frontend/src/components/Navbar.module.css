@@ -48,10 +48,7 @@
   transition: all 0.2s;
 }
 
-.logoutBtn:hover {
-  border-color: white;
-  color: white;
-}
+.logoutBtn:hover { border-color: white; color: white; }
 
 /* ── Hamburger ── */
 .hamburger {
@@ -105,12 +102,12 @@
 
 /* ── Mobile menu ── */
 .mobileMenu {
-  display: none;
   position: absolute;
   top: 60px;
   left: 0;
   right: 0;
   background: #1A1A1A;
+  display: flex;
   flex-direction: column;
   padding: 16px 24px 24px;
   gap: 0;
@@ -157,5 +154,4 @@
 @media (max-width: 640px) {
   .links { display: none; }
   .hamburger { display: flex; }
-  .mobileMenu { display: flex; }
 }
