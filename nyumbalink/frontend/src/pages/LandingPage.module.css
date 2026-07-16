@@ -1,8 +1,8 @@
 /* ── Base ── */
 .page {
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  background: #FAFAF8;
-  color: #1A1A1A;
+  font-family: var(--font-body);
+  background: var(--color-bg-cream);
+  color: var(--color-ink);
   overflow-x: hidden;
 }
 
@@ -28,30 +28,30 @@
 }
 
 .logo {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--color-ink);
   letter-spacing: -0.5px;
   flex-shrink: 0;
 }
 
 .navLinks {
   display: flex;
-  gap: 28px;
+  gap: var(--space-7);
   flex: 1;
   justify-content: flex-end;
 }
 
 .navLinks a {
   font-size: 14px;
-  color: #555;
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 
-.navLinks a:hover { color: #C85A1A; }
+.navLinks a:hover { color: var(--color-accent); }
 
 .navActions {
   display: flex;
@@ -61,22 +61,22 @@
 .navLogin {
   padding: 8px 18px;
   background: transparent;
-  border: 1.5px solid #ddd;
-  border-radius: 8px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 600;
-  color: #444;
+  color: var(--color-text-secondary);
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.navLogin:hover { border-color: #999; color: #1A1A1A; }
+.navLogin:hover { border-color: var(--color-text-muted); color: var(--color-ink); }
 
 .navCta {
   padding: 8px 20px;
-  background: #C85A1A;
+  background: var(--color-accent);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 700;
   color: white;
@@ -84,7 +84,7 @@
   transition: background 0.2s;
 }
 
-.navCta:hover { background: #A84A12; }
+.navCta:hover { background: var(--color-accent-hover); }
 
 /* ── Hero ── */
 .hero {
@@ -116,34 +116,34 @@
 
 .heroBadge {
   display: inline-block;
-  background: #FEF0E7;
-  color: #C85A1A;
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
   font-size: 13px;
   font-weight: 700;
   padding: 6px 14px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   margin-bottom: 24px;
   letter-spacing: 0.3px;
 }
 
 .heroTitle {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(44px, 6vw, 72px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -2px;
-  color: #1A1A1A;
+  color: var(--color-ink);
   margin-bottom: 20px;
 }
 
 .heroAccent {
-  color: #C85A1A;
+  color: var(--color-accent);
   font-style: italic;
 }
 
 .heroSub {
   font-size: 18px;
-  color: #555;
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin-bottom: 32px;
   max-width: 440px;
@@ -151,48 +151,48 @@
 
 .heroCtas {
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
   flex-wrap: wrap;
   margin-bottom: 24px;
 }
 
 .ctaPrimary {
   padding: 14px 28px;
-  background: #C85A1A;
+  background: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
 }
 
-.ctaPrimary:hover { background: #A84A12; transform: translateY(-1px); }
+.ctaPrimary:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
 
 .ctaSecondary {
   padding: 14px 28px;
   background: transparent;
-  color: #1A1A1A;
-  border: 2px solid #1A1A1A;
-  border-radius: 10px;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-ms);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.ctaSecondary:hover { background: #1A1A1A; color: white; }
+.ctaSecondary:hover { background: var(--color-ink); color: white; }
 
 .heroTrust {
   display: flex;
-  gap: 20px;
+  gap: var(--space-5);
   flex-wrap: wrap;
 }
 
 .heroTrust span {
   font-size: 13px;
-  color: #666;
+  color: var(--color-text-secondary);
   font-weight: 600;
 }
 
@@ -200,7 +200,7 @@
 .heroVisual {
   flex: 1;
   display: flex;
-  gap: 16px;
+  gap: var(--space-4);
   align-items: center;
   position: relative;
   z-index: 1;
@@ -209,9 +209,9 @@
 .heroCard {
   flex: 1;
   background: white;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  box-shadow: var(--shadow-lg);
   border: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -235,29 +235,29 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #1E7C47;
+  background: var(--color-success);
   color: white;
   font-size: 11px;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
 }
 
 .heroCardBody {
-  padding: 16px;
+  padding: var(--space-4);
 }
 
 .heroCardBody h4 {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 4px;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .heroCardBody p {
   font-size: 15px;
   font-weight: 800;
-  color: #C85A1A;
+  color: var(--color-accent);
   margin-bottom: 8px;
 }
 
@@ -268,16 +268,16 @@
 
 .heroCardTags span {
   font-size: 11px;
-  background: #F4F4F2;
-  color: #666;
+  background: var(--color-bg-cream-alt);
+  color: var(--color-text-secondary);
   padding: 3px 8px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   font-weight: 600;
 }
 
 /* ── Stats ── */
 .stats {
-  background: #1A1A1A;
+  background: var(--color-ink);
   padding: 48px 24px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -286,17 +286,17 @@
 
 .statItem {
   text-align: center;
-  padding: 24px;
+  padding: var(--space-6);
   border-right: 1px solid rgba(255,255,255,0.08);
 }
 
 .statItem:last-child { border-right: none; }
 
 .statValue {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 44px;
   font-weight: 800;
-  color: #C85A1A;
+  color: var(--color-accent);
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -325,7 +325,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #C85A1A;
+  color: var(--color-accent);
   margin-bottom: 16px;
 }
 
@@ -340,17 +340,17 @@
 }
 
 .sectionTitle {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 16px;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .sectionSub {
   font-size: 18px;
-  color: #666;
+  color: var(--color-text-secondary);
   margin-bottom: 56px;
 }
 
@@ -358,12 +358,12 @@
 .howGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: var(--space-8);
 }
 
 .howCard {
   background: white;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   padding: 36px 32px;
   border: 1px solid rgba(0,0,0,0.06);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -371,14 +371,14 @@
 
 .howCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-lg);
 }
 
 .howStep {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 56px;
   font-weight: 800;
-  color: #F0EBE3;
+  color: var(--color-bg-cream-alt);
   line-height: 1;
   margin-bottom: 20px;
 }
@@ -387,18 +387,18 @@
   font-size: 20px;
   font-weight: 800;
   margin-bottom: 12px;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .howCard p {
   font-size: 15px;
-  color: #666;
+  color: var(--color-text-secondary);
   line-height: 1.7;
 }
 
 /* ── Story ── */
 .story {
-  background: #1A1A1A;
+  background: var(--color-ink);
   padding: 100px 24px;
 }
 
@@ -412,7 +412,7 @@
 }
 
 .storyText h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -1px;
@@ -439,7 +439,7 @@
 
 .storyVisual {
   position: relative;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   height: 480px;
 }
@@ -460,7 +460,7 @@
   font-size: 13px;
   font-weight: 600;
   padding: 6px 14px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   backdrop-filter: blur(8px);
 }
 
@@ -468,29 +468,29 @@
 .testimonialGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: var(--space-6);
   margin-top: 48px;
 }
 
 .testimonialCard {
   background: white;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   padding: 32px 28px;
   border: 1px solid rgba(0,0,0,0.06);
   position: relative;
 }
 
 .testimonialQuote {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 72px;
-  color: #F0EBE3;
+  color: var(--color-bg-cream-alt);
   line-height: 0.7;
   margin-bottom: 16px;
 }
 
 .testimonialCard p {
   font-size: 15px;
-  color: #444;
+  color: var(--color-text-secondary);
   line-height: 1.75;
   margin-bottom: 24px;
 }
@@ -498,14 +498,14 @@
 .testimonialAuthor {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .testimonialAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #C85A1A;
+  background: var(--color-accent);
   color: white;
   font-size: 16px;
   font-weight: 800;
@@ -519,17 +519,17 @@
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .testimonialAuthor span {
   font-size: 13px;
-  color: #888;
+  color: var(--color-text-muted);
 }
 
 /* ── Invest ── */
 .invest {
-  background: #C85A1A;
+  background: var(--color-accent);
   padding: 100px 24px;
 }
 
@@ -543,7 +543,7 @@
 }
 
 .investText h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -1px;
@@ -576,11 +576,11 @@
 .investCta {
   display: inline-block;
   background: white;
-  color: #C85A1A;
+  color: var(--color-accent);
   font-size: 15px;
   font-weight: 800;
   padding: 14px 28px;
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   text-decoration: none;
   transition: transform 0.2s;
 }
@@ -590,21 +590,21 @@
 .investMetrics {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .metricCard {
   background: rgba(255,255,255,0.12);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   padding: 28px 24px;
   border: 1px solid rgba(255,255,255,0.15);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .metricValue {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 32px;
   font-weight: 800;
   color: white;
@@ -628,17 +628,17 @@
 }
 
 .donateLeft h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 800;
   letter-spacing: -1px;
-  color: #1A1A1A;
+  color: var(--color-ink);
   margin-bottom: 16px;
 }
 
 .donateLeft p {
   font-size: 16px;
-  color: #666;
+  color: var(--color-text-secondary);
   line-height: 1.7;
   margin-bottom: 28px;
 }
@@ -652,7 +652,7 @@
 
 .donateAmount, .donateAmountActive {
   padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -661,25 +661,25 @@
 
 .donateAmount {
   background: white;
-  border: 2px solid #ddd;
-  color: #444;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-secondary);
 }
 
-.donateAmount:hover { border-color: #C85A1A; color: #C85A1A; }
+.donateAmount:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
 .donateAmountActive {
-  background: #C85A1A;
-  border: 2px solid #C85A1A;
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent);
   color: white;
 }
 
 .donateBtn {
   width: 100%;
-  padding: 16px;
-  background: #1A7A41;
+  padding: var(--space-4);
+  background: var(--color-success);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
@@ -687,28 +687,28 @@
   transition: background 0.2s;
 }
 
-.donateBtn:hover { background: #156234; }
+.donateBtn:hover { background: var(--color-success); }
 
 .donateSub {
   font-size: 13px;
-  color: #999;
+  color: var(--color-text-muted);
   text-align: center;
 }
 
 .donateImpact {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
   background: white;
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
   border: 1px solid rgba(0,0,0,0.06);
 }
 
 .impactItem {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .impactIcon {
@@ -720,12 +720,12 @@
   display: block;
   font-size: 16px;
   font-weight: 800;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .impactItem span {
   font-size: 13px;
-  color: #888;
+  color: var(--color-text-muted);
 }
 
 /* ── FAQ ── */
@@ -744,32 +744,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .faqQuestion span:first-child {
   font-size: 16px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--color-ink);
 }
 
 .faqIcon {
   font-size: 22px;
-  color: #C85A1A;
+  color: var(--color-accent);
   font-weight: 400;
   flex-shrink: 0;
 }
 
 .faqAnswer {
   font-size: 15px;
-  color: #666;
+  color: var(--color-text-secondary);
   line-height: 1.7;
   padding-top: 12px;
 }
 
 /* ── Contact ── */
 .contact {
-  background: #1A1A1A;
+  background: var(--color-ink);
   padding: 100px 24px;
 }
 
@@ -783,7 +783,7 @@
 }
 
 .contactText h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -1px;
@@ -802,7 +802,7 @@
 .contactDetails {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .contactDetails div {
@@ -817,7 +817,7 @@
   padding: 14px 16px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   font-size: 15px;
   color: white;
   margin-bottom: 14px;
@@ -839,31 +839,31 @@
 
 .contactForm button {
   width: 100%;
-  padding: 16px;
-  background: #C85A1A;
+  padding: var(--space-4);
+  background: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.contactForm button:hover { background: #A84A12; }
+.contactForm button:hover { background: var(--color-accent-hover); }
 
 .successMsg {
   text-align: center;
   padding: 60px 40px;
   background: rgba(255,255,255,0.04);
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   border: 1px solid rgba(255,255,255,0.1);
 }
 
 .successMsg span {
   display: block;
   font-size: 40px;
-  color: #1E7C47;
+  color: var(--color-success);
   margin-bottom: 16px;
 }
 
@@ -881,7 +881,7 @@
 
 /* ── Footer ── */
 .footer {
-  background: #111;
+  background: var(--color-ink);
   padding: 40px 24px;
 }
 
@@ -895,7 +895,7 @@
 }
 
 .footerLogo {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 700;
   color: white;
@@ -903,7 +903,7 @@
 
 .footerLinks {
   display: flex;
-  gap: 24px;
+  gap: var(--space-6);
   flex: 1;
   flex-wrap: wrap;
 }

@@ -1,0 +1,53 @@
+:root {
+  /* Brand colors */
+  --color-primary: #1A56A0;
+  --color-primary-hover: #154A8A;
+  --color-accent: #C85A1A;
+  --color-accent-hover: #A84A12;
+  --color-success: #1E7C47;
+  --color-success-bg: #D4EFDF;
+  --color-danger: #9B2335;
+  --color-danger-bg: #FADBD8;
+  --color-danger-deep: #7D1C2A;
+  --color-warning: #F59E0B;
+  --color-warning-dark: #B45309;
+  --color-warning-bg: #FEF3C7;
+  --color-primary-bg: #EBF2FB;
+  --color-accent-bg: #FEF0E7;
+
+  /* Neutrals */
+  --color-ink: #1A1A1A;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-bg-cream: #FAFAF8;
+  --color-bg-cream-alt: #F4F2EE;
+  --color-border: #E0DDD8;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Spacing scale (4px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+
+  /* Radius scale */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-ms: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 100px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(26, 26, 26, 0.08);
+  --shadow-md: 0 4px 12px rgba(26, 26, 26, 0.10);
+  --shadow-lg: 0 8px 24px rgba(26, 26, 26, 0.14);
+}
