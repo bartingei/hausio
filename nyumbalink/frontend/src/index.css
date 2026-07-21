@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa;
-  color: #1a1a1a;
+  font-family: var(--font-body);
+  background: var(--color-bg-cream);
+  color: var(--color-ink);
 }
 
 button {
@@ -21,6 +21,6 @@ a {
 .leaflet-container {
   height: 300px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   z-index: 1;
 }

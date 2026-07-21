@@ -1,17 +1,17 @@
 .nav {
   height: 60px;
-  background: #1A1A1A;
+  background: var(--color-ink);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 var(--space-8);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .logo {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 800;
   color: white;
@@ -23,7 +23,8 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: var(--space-7);
+  font-family: var(--font-body);
 }
 
 .links a {
@@ -41,7 +42,7 @@
   padding: 7px 16px;
   background: transparent;
   border: 1.5px solid rgba(255,255,255,0.3);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: rgba(255,255,255,0.75);
   font-size: 14px;
   font-weight: 600;
@@ -53,8 +54,8 @@
 .logoutBtn:hover { border-color: white; color: white; }
 
 @media (max-width: 480px) {
-  .nav { padding: 0 16px; }
-  .links { gap: 16px; }
+  .nav { padding: 0 var(--space-4); }
+  .links { gap: var(--space-4); }
   .links a { font-size: 13px; }
   .logoutBtn { padding: 6px 12px; font-size: 13px; }
 }
